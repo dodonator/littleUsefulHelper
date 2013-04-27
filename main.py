@@ -40,6 +40,20 @@ class generalTools(object):
 		os.system('clear')
 	def conCom(self,command):
 		os.system(command)
+class fileTools(object):
+	def readF(self,filename):
+		file1 = open(filename,'r')
+		f1 = file1.read()
+		file1.close()
+		return f1
+	def addF(self,filename,text):
+		file1 = open(filename,'a')
+		f1 = file1.write(text)
+		file1.close()
+	def writeF(self,filename,text):
+		file1 = open(filename,'w')
+		f1 = file1.write(text)
+		file1.close()
 timeT = timeTools()
 gT = generalTools()
-
+fT = fileTools()
