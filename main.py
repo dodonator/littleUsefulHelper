@@ -36,8 +36,10 @@ class generalTools(object):
 	def cw(self,sec): # clear and wait
 		os.system('clear')
 		time.sleep(sec)
-	def CL(self):
+	def CL(self): # clear
 		os.system('clear')
+	def conCom(self,command):
+		os.system(command)
 timeT = timeTools()
 gT = generalTools()
 
