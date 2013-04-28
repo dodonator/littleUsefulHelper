@@ -29,7 +29,24 @@ class timeTools(object):
 class generalTools(object):
 	def repString(self,string,rep):
 		result = rep*string
-		return result	
+		return result
+	def creListAl(self,demand):
+		alph = {}
+		bigAlph = [] # Large character (A,B,C ... Z)
+		litAlph = [] # Small character (a,b,c ...z)
+		for i in range(26):
+			litAlph.append(chr(65+i))
+		i = 0
+		for i in range(26):
+			bigAlph.append(chr(97+i))
+		alph['l'] = bigAlph
+		alph['s'] = litAlph
+		if demand == 's' or demand == 'S':
+			return alph['s']
+		elif demand == 'l' or demand == 'L':
+			return alph['l']
+		else:
+			return alph	
 	def wc(self,sec): # wait and clear
 		time.sleep(sec)
 		os.system('clear')
