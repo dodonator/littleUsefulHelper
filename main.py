@@ -4,6 +4,8 @@ import random
 import math
 import time
 import datetime
+import getpass
+
 class timeTools(object):
 	def getTime(self):
 		localTime = {}
@@ -25,9 +27,10 @@ class timeTools(object):
 	def slM(self,mon): # sleep minutes
 		time.sleep(mon*60)
 	def slH(self,hour): # sleep hours
-		time.sleep(hour*3600)	
+		time.sleep(hour*3600)
+			
 class generalTools(object):
-	def repString(self,string,rep):
+	def repString(self,string,rep):s
 		result = rep*string
 		return result
 	def creListAl(self,demand):
@@ -53,10 +56,34 @@ class generalTools(object):
 	def cw(self,sec): # clear and wait
 		os.system('clear')
 		time.sleep(sec)
-	def CL(self): # clear
+	def CL(self): # clear 
 		os.system('clear')
 	def conCom(self,command):
 		os.system(command)
+	def CLRI(self,length,start,end,typ): # Create List of Random Integer
+		if typ == 'a':
+			result = []
+			for i in range(length):
+				result.append(random.randint(start,end))
+		elif typ == 'd':
+			result = {}
+			for i in range(length):			
+				result[i] = random.randint(start,end)
+		return result
+		def secretKey(self,passphrase,numMistakes):
+			access = False
+			key = ''
+			while key != passphrase:
+				key = getpass.getpass('Geben sie das Passwort ein: \n')
+				if counter <= numMistakes:
+					pass
+				else:
+					access = False
+					return access
+				counter += 1
+			access = True
+			return access
+			
 class fileTools(object):
 	def readF(self,filename):
 		file1 = open(filename,'r')
@@ -71,6 +98,7 @@ class fileTools(object):
 		file1 = open(filename,'w')
 		f1 = file1.write(text)
 		file1.close()
+
 timeT = timeTools()
 gT = generalTools()
 fT = fileTools()
