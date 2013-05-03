@@ -70,6 +70,7 @@ class generalTools(object):
 			for i in range(length):			
 				result[i] = random.randint(start,end)
 		return result
+		
 		def secretKey(self,passphrase,numMistakes):
 			access = False
 			key = ''
@@ -83,6 +84,12 @@ class generalTools(object):
 				counter += 1
 			access = True
 			return access
+		def CTTL(tupel): # Convert tuppel to list
+			result = []
+			for i in range(len(tupel)):
+				result.append(tupel[i])
+			return result
+			
 			
 class fileTools(object):
 	def readF(self,filename):
