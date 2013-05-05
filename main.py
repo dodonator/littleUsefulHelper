@@ -103,7 +103,7 @@ class generalTools(object):
 				result.append(tupel[i])
 			return result
 		
-		def LTTLG(timelimit,comand): # Lighning Talk Time Limit Guide
+		def LTTLG(timelimit,comand): # Lightning Talk Time Limit Guide
 			t = timelimit
 			for i in range(t):
 				os.system('clear')
