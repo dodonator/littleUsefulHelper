@@ -102,7 +102,15 @@ class generalTools(object):
 			for i in range(len(tupel)):
 				result.append(tupel[i])
 			return result
-			
+		
+		def LTTLG(timelimit,comand): # Lighning Talk Time Limit Guide
+			t = timelimit
+			for i in range(t):
+				os.system('clear')
+				print "Action in: " + str(int((t-i)/60)) + ':' + str((t-i)%60)
+				time.sleep(1)
+			os.system('clear')
+			os.system(comand)	
 			
 class fileTools(object):
 
