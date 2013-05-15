@@ -1,3 +1,4 @@
+# coding: utf-8
 import sys
 import os
 import random
@@ -36,7 +37,7 @@ class timeTools(object):
 			
 class generalTools(object):
 
-	def repString(self,string,rep):s
+	def repString(self,string,rep):
 		result = rep*string
 		return result
 		
@@ -70,6 +71,7 @@ class generalTools(object):
 		os.system('clear')
 		
 	def conCom(self,command):
+		os.system('clear')
 		os.system(command)
 		
 	def CLRI(self,length,start,end,typ): # Create List of Random Integer
@@ -81,9 +83,9 @@ class generalTools(object):
 			result = {}
 			for i in range(length):			
 				result[i] = random.randint(start,end)
-		return result
+		return result # Can return list or dict
 		
-		def secretKey(self,passphrase,numMistakes):
+	def secretKey(self,passphrase,numMistakes):
 			access = False
 			key = ''
 			while key != passphrase:
@@ -97,21 +99,29 @@ class generalTools(object):
 			access = True
 			return access
 			
-		def CTTL(tupel): # Convert tuppel to list
-			result = []
-			for i in range(len(tupel)):
-				result.append(tupel[i])
-			return result
+	def CTTL(tupel): # Convert tuppel to list
+		result = []
+		for i in range(len(tupel)):
+			result.append(tupel[i])
+		return result
 		
-		def LTTLG(timelimit,comand): # Lightning Talk Time Limit Guide
-			t = timelimit
-			for i in range(t):
-				os.system('clear')
-				print "Action in: " + str(int((t-i)/60)) + ':' + str((t-i)%60)
-				time.sleep(1)
+	def LTTLG(timelimit,comand): # Lightning Talk Time Limit Guide
+		t = timelimit
+		for i in range(t):
 			os.system('clear')
-			os.system(comand)	
-			
+			print "Action in: " + str(int((t-i)/60)) + ':' + str((t-i)%60)
+			time.sleep(1)
+		os.system('clear')
+		os.system(comand)
+	def cube(self,size): # Würfel
+		result = random.randint(1,size)
+		return result
+	def multiCube(self,size,number): # mehr Würfel
+		result = []
+		for i in range(number):
+			result.append(random.randint(1,size))	
+		return result
+		
 class fileTools(object):
 
 	def readF(self,filename):
