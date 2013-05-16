@@ -38,6 +38,21 @@ class timeTools(object):
 class generalTools(object):
 
 	def repString(self,string,rep):
+		'''
+		repString(string,rep)
+		Repeat a Sting rep times
+		#####################################
+		Parameter:
+		string : the string to Repeat
+		rep    : the number of repetition
+		#####################################
+		Examples:
+		string : "#"
+		rep    : 5
+		Result:
+		"#####"
+		#####################################
+		'''
 		result = rep*string
 		return result
 		
@@ -64,6 +79,10 @@ class generalTools(object):
 		os.system('clear')
 		
 	def cw(self,sec): # clear and wait
+		'''
+		Clear the console and wait x seconds
+		Leert die Konsole und wartet x Sekunden
+		'''
 		os.system('clear')
 		time.sleep(sec)
 		
@@ -99,13 +118,31 @@ class generalTools(object):
 			access = True
 			return access
 			
-	def CTTL(tupel): # Convert tuppel to list
+	def CTTL(self,tupel): # Convert tuppel to list
 		result = []
 		for i in range(len(tupel)):
 			result.append(tupel[i])
 		return result
-		
-	def LTTLG(timelimit,comand): # Lightning Talk Time Limit Guide
+	
+	def STC(self):
+		'''
+		Shutdown the Computer!
+		'''
+		os.system('clear | sudo shutdown now')
+
+	def LTTLG(self,timelimit,comand): # Lightning Talk Time Limit Guide
+		'''
+		For Lightning Talks or other time limited Talks
+		############################################################
+		Parameter:
+		timelimit : the time in seconds until the Action
+		command   : the bash command, which work after the timelimit
+		############################################################
+		Examples:
+		timelimit : 300 (5 Minutes)
+		command : "sudo shutdown now"
+		After 5 Minutes the program will shutdown the Computer
+		'''
 		t = timelimit
 		for i in range(t):
 			os.system('clear')
@@ -113,15 +150,44 @@ class generalTools(object):
 			time.sleep(1)
 		os.system('clear')
 		os.system(comand)
+
 	def cube(self,size): # Würfel
 		result = random.randint(1,size)
 		return result
+
 	def multiCube(self,size,number): # mehr Würfel
 		result = []
 		for i in range(number):
 			result.append(random.randint(1,size))	
 		return result
-		
+	
+	def TANE(self,ex): # throw a nice Exception
+		raise Exception(ex)
+
+	def KINAF(self,message): # Kill it nice and fast
+		sys.exit(message)
+
+	def ATD(self,key,value,dictonary):
+		dictonary[key] = value
+		return dictonary
+	
+	def G2DL(self,number): # Generate 2-Dimesional List
+		result = []
+		for i in range(number):
+			result.append([])
+		return result
+	
+	def SH(self,func):
+		'''
+		show the help of a function
+		SH(func)
+		#########################################
+		Parameter:
+		func : the function for your help
+		#########################################
+		'''
+		print help(func)
+
 class fileTools(object):
 
 	def readF(self,filename):
@@ -139,10 +205,3 @@ class fileTools(object):
 		file1 = open(filename,'w')
 		f1 = file1.write(text)
 		file1.close()
-
-class main(object):
-	def __init__(self):
-		self.timeT = timeTools()
-		self.gT = generalTools()
-		self.fT = fileTools()
-		
