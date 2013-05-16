@@ -90,6 +90,17 @@ class generalTools(object):
 		os.system('clear')
 		
 	def conCom(self,command):
+		'''
+		Execute a bash command
+		###################################################
+		Parameter:
+		command : the command to Execute
+		###################################################
+		Example:
+		command : "echo 'foo'"
+		Result: "foo"
+		###################################################
+		'''
 		os.system('clear')
 		os.system(command)
 		
@@ -168,6 +179,23 @@ class generalTools(object):
 		sys.exit(message)
 
 	def ATD(self,key,value,dictonary):
+		'''
+		Add To dictonary
+		ATD(key,value,dictonary)
+		###############################################
+		Parameter:
+		key       : key for addition
+		value     : value to add
+		dictonary : dictonary of operation
+		###############################################
+		Example:
+		key : "x"
+		value : 3
+		dictonary : {"y":2}
+		Result:
+		{"x":3,"y":2}
+		###############################################
+		'''
 		dictonary[key] = value
 		return dictonary
 	
