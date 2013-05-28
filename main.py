@@ -237,10 +237,15 @@ class generalTools(object):
 		#########################################
 		'''
 		print help(func)
+
+	def printArray(self,array):
+		for i in array:
+			print i
+
+class randomTools(object):
 	def ranPerPro(self,*probs): # Random per Probabilities
 		base = []
 		result = []
-		#base = probs
 		i = 0
 		testResult = 0
 		for i in probs:
@@ -256,7 +261,6 @@ class generalTools(object):
 			testResult.append([])
 		i = 0
 		counter = 0
-		print base
 		for i in base:
 			for p in range(i):
 				testResult[counter].append(counter)
@@ -271,7 +275,28 @@ class generalTools(object):
 		else:
 			r = random.randint(0,99)
 			return result[r]
-			
+	def testRanPerPro(self,rep):
+		result = []
+		for i in range(rep):
+			result.append(self.ranPerPro(5,10,15,20,12,12,12,12,2)) # to change the probs change these Integers			
+		return result
+	def analyseTestRanPerPro(self,base):
+		result = []
+		testResult = []
+		for i in base:
+			if i not in testResult:
+				testResult.append(i)
+		i = 0
+		for i in range(len(testResult)):
+			result.append([0])
+		i = 0
+		for i in base:
+			for p in testResult:
+				if i == p:
+					result[p][0] += 1
+		return result
+	def coolAnalyse(self,rep):
+		randomTools.printArray(self.analyseTestRanPerPro(self.testRanPerPro(rep)))
 
 class fileTools(object):
 
