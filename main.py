@@ -105,6 +105,20 @@ class generalTools(object):
 		os.system(command)
 		
 	def CLRI(self,length,start,end,typ): # Create List of Random Integer
+		'''
+		This function create a list of random Integer
+		CLRI(length,start,end,typ)
+		#############################################
+		Parameter: 
+		length: Length of the created list
+		start: start of the random range
+		end: end of the random range
+		#############################################
+		Example:
+		CLRI(5,1,4)
+		Result: 
+		[1,4,3,2,1]
+		'''
 		if typ == 'a':
 			result = []
 			for i in range(length):
@@ -176,6 +190,14 @@ class generalTools(object):
 		raise Exception(ex)
 
 	def KINAF(self,message): # Kill it nice and fast
+		'''
+		A method to quit the program
+		#################################################
+		Parameter:
+		message: Message for the user, which will shown
+		         while the killing of the program.
+		#################################################
+		'''
 		sys.exit(message)
 
 	def ATD(self,key,value,dictonary):
@@ -215,6 +237,41 @@ class generalTools(object):
 		#########################################
 		'''
 		print help(func)
+	def ranPerPro(self,*probs): # Random per Probabilities
+		base = []
+		result = []
+		#base = probs
+		i = 0
+		testResult = 0
+		for i in probs:
+			base.append(i)
+		i = 0
+		for i in base:
+			testResult += i
+		if testResult != 100:
+			raise Exception('ERR. 001: The sum of your probabilities must be 100.')
+		i = 0
+		testResult = []
+		for i in base:
+			testResult.append([])
+		i = 0
+		counter = 0
+		print base
+		for i in base:
+			for p in range(i):
+				testResult[counter].append(counter)
+			counter += 1
+		i = 0
+		p = 0
+		for i in testResult:
+			for p in i:
+				result.append(p)
+		if len(result) != 100:
+			raise Exception('There is an Error you stupid idiot.')
+		else:
+			r = random.randint(0,99)
+			return result[r]
+			
 
 class fileTools(object):
 
