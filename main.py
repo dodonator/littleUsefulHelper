@@ -7,33 +7,6 @@ import time
 import datetime
 import getpass
 
-class timeTools(object):
-
-	def getTime(self):
-		localTime = {}
-		lTime = time.localtime()
-		localTime['year'] = lTime[0]
-		localTime['month'] = lTime[1] 
-		localTime['day'] = lTime[2]
-		localTime['hour'] = lTime[3]
-		localTime['minute'] = lTime[4]
-		localTime['second'] = lTime[5]
-		return localTime
-		
-	def formatTimeDict(self,timeDict):
-		result = ''
-		result = str(timeDict['hour']) + ':' + str(timeDict['minute']) + ':' + str(timeDict['second'])
-		result += ' ' + str(timeDict['day']) + '.' + str(timeDict['month']) + '.' + str(timeDict['year'])
-		return result
-		
-	def slS(self,sec): # sleep seconds
-		time.sleep(sec)
-		
-	def slM(self,mon): # sleep minutes
-		time.sleep(mon*60)
-		
-	def slH(self,hour): # sleep hours
-		time.sleep(hour*3600)
 			
 class generalTools(object):
 
@@ -73,36 +46,6 @@ class generalTools(object):
 			return alph['l']
 		else:
 			return alph
-				
-	def wc(self,sec): # wait and clear
-		time.sleep(sec)
-		os.system('clear')
-		
-	def cw(self,sec): # clear and wait
-		'''
-		Clear the console and wait x seconds
-		Leert die Konsole und wartet x Sekunden
-		'''
-		os.system('clear')
-		time.sleep(sec)
-		
-	def CL(self): # clear 
-		os.system('clear')
-		
-	def conCom(self,command):
-		'''
-		Execute a bash command
-		###################################################
-		Parameter:
-		command : the command to Execute
-		###################################################
-		Example:
-		command : "echo 'foo'"
-		Result: "foo"
-		###################################################
-		'''
-		os.system('clear')
-		os.system(command)
 		
 	def CLRI(self,length,start,end,typ): # Create List of Random Integer
 		'''
@@ -148,12 +91,6 @@ class generalTools(object):
 		for i in range(len(tupel)):
 			result.append(tupel[i])
 		return result
-	
-	def STC(self):
-		'''
-		Shutdown the Computer!
-		'''
-		os.system('clear | sudo shutdown now')
 
 	def LTTLG(self,timelimit,comand): # Lightning Talk Time Limit Guide
 		'''
@@ -175,10 +112,6 @@ class generalTools(object):
 			time.sleep(1)
 		os.system('clear')
 		os.system(comand)
-
-	def cube(self,size): # Würfel
-		result = random.randint(1,size)
-		return result
 
 	def multiCube(self,size,number): # mehr Würfel
 		result = []
@@ -241,7 +174,42 @@ class generalTools(object):
 	def printArray(self,array):
 		for i in array:
 			print i
+class consoleTools(object):
+	def STC(self):
+		'''
+		Shutdown the Computer!
+		'''
+		os.system('clear | sudo shutdown now')
 
+	def conCom(self,command):
+		'''
+		Execute a bash command
+		###################################################
+		Parameter:
+		command : the command to Execute
+		###################################################
+		Example:
+		command : "echo 'foo'"
+		Result: "foo"
+		###################################################
+		'''
+		os.system('clear')
+		os.system(command)
+
+	def wc(self,sec): # wait and clear
+		time.sleep(sec)
+		os.system('clear')
+		
+	def cw(self,sec): # clear and wait
+		'''
+		Clear the console and wait x seconds
+		Leert die Konsole und wartet x Sekunden
+		'''
+		os.system('clear')
+		time.sleep(sec)
+		
+	def CL(self): # clear 
+		os.system('clear')	
 class randomTools(object):
 	def ranPerPro(self,*probs): # Random per Probabilities
 		base = []
@@ -298,6 +266,9 @@ class randomTools(object):
 	def coolAnalyse(self,rep):
 		randomTools.printArray(self.analyseTestRanPerPro(self.testRanPerPro(rep)))
 
+	def cube(self,size): # Würfel
+		result = random.randint(1,size)
+		return result
 class fileTools(object):
 
 	def readF(self,filename):
@@ -315,3 +286,30 @@ class fileTools(object):
 		file1 = open(filename,'w')
 		f1 = file1.write(text)
 		file1.close()
+class timeTools(object):
+
+	def getTime(self):
+		localTime = {}
+		lTime = time.localtime()
+		localTime['year'] = lTime[0]
+		localTime['month'] = lTime[1] 
+		localTime['day'] = lTime[2]
+		localTime['hour'] = lTime[3]
+		localTime['minute'] = lTime[4]
+		localTime['second'] = lTime[5]
+		return localTime
+		
+	def formatTimeDict(self,timeDict):
+		result = ''
+		result = str(timeDict['hour']) + ':' + str(timeDict['minute']) + ':' + str(timeDict['second'])
+		result += ' ' + str(timeDict['day']) + '.' + str(timeDict['month']) + '.' + str(timeDict['year'])
+		return result
+		
+	def slS(self,sec): # sleep seconds
+		time.sleep(sec)
+		
+	def slM(self,mon): # sleep minutes
+		time.sleep(mon*60)
+		
+	def slH(self,hour): # sleep hours
+		time.sleep(hour*3600)
