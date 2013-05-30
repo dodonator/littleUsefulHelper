@@ -3,6 +3,7 @@ g = generalTools()
 t = timeTools()
 f = fileTools()
 r = randomTools()
+c = consoleTools()
 '''
 #####################################################
 If you want help use the function g.SH(functionName)
@@ -12,3 +13,4 @@ Example:
 '''
 #####################################################
 '''
+g.ACM(1400,56,'p')

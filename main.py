@@ -17,11 +17,11 @@ class generalTools(object):
 		#####################################
 		Parameter:
 		string : the string to Repeat
-		rep    : the number of repetition
+		rep	: the number of repetition
 		#####################################
 		Examples:
 		string : "#"
-		rep    : 5
+		rep	: 5
 		Result:
 		"#####"
 		#####################################
@@ -128,7 +128,7 @@ class generalTools(object):
 		#################################################
 		Parameter:
 		message: Message for the user, which will shown
-		         while the killing of the program.
+				 while the killing of the program.
 		#################################################
 		'''
 		sys.exit(message)
@@ -139,8 +139,8 @@ class generalTools(object):
 		ATD(key,value,dictonary)
 		###############################################
 		Parameter:
-		key       : key for addition
-		value     : value to add
+		key	   : key for addition
+		value	 : value to add
 		dictonary : dictonary of operation
 		###############################################
 		Example:
@@ -174,6 +174,49 @@ class generalTools(object):
 	def printArray(self,array):
 		for i in array:
 			print i
+			
+	def ACM(self,rep,matrixWith,mode): # A cool Matrix
+		'''
+		ACM(rep,matrixWith,mode)
+		Creates a nice matrix in which you can search words
+		Return a list of the lines of the matrix
+		######################################################
+		Parameter:
+		rep: Repetition (should be a multiple of matrixWith)
+		matrixWith: Writh of the matrix
+		mode: the modus of the program
+		######################################################
+		'''
+		os.system('clear')
+		matrix = []
+		p_history = 1
+		p_tmp = ''
+		for i in range(rep):
+			p =  chr(random.randint(ord("A"),ord("Z")))
+			p_history += 1
+
+			if mode == 'p':
+				if p_history <= matrixWith:
+					print p,
+					p_tmp += p
+				else:
+					print p
+					p_history = 1
+					matrix.append(p_tmp)
+					p_tmp = ''
+
+			elif mode == 'r':
+				if p_history <= matrixWith:
+					p_tmp += p
+				else:
+					p_history = 1
+					matrix.append(p_tmp)
+					p_tmp = ''
+		return matrix
+
+	def testACM(self,matrix):
+		return matrix[random.randint(0,len(matrix)-1)]
+
 class consoleTools(object):
 	def STC(self):
 		'''
