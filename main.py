@@ -290,8 +290,7 @@ class generalTools(object):
 				for i in shortcuts:
 					if __x == i:
 						os.system(shortcuts[i])
-					else:
-						os.system(__x)
+				os.system(__x)
 				self.history.append(__x)
 			else:
 				self.history.append(__x)
