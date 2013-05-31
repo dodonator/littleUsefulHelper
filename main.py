@@ -9,6 +9,8 @@ import getpass
 
 			
 class generalTools(object):
+	def __init__(self):
+		self.history = []
 
 	def repString(self,string,rep):
 		'''
@@ -217,12 +219,90 @@ class generalTools(object):
 	def testACM(self,matrix):
 		return matrix[random.randint(0,len(matrix)-1)]
 
+	def matrix(self,rep,matrixWith,speed,divisor,modBorder):
+		rep * 56
+		os.system('clear')
+		alph = []
+		orAlph = []
+		
+		for i in range(26):
+			alph.append(chr(ord('A')+i))
+			
+		i = 0
+		
+		for i in range(26):
+			alph.append(chr(ord('a')+i))
+			orAlph = alph
+		i = 0
+		
+		for i in range(10):
+			alph.append(str(i))
+			orAlph = alph
+		i = 0
+		
+		alph.append(' ')
+		spaceCounter = 0
+		lineCounter = 0
+		for i in range(rep):
+			for p in range(matrixWith):
+				tmp = alph[random.randint(0,len(alph)-1)] 
+				print tmp ,
+				if tmp == ' ':
+					spaceCounter += 1
+				if spaceCounter >= (matrixWith/divisor):
+					os.system('clear')
+					print ''
+					os.system('clear')
+					print (matrixWith*2)*'#'
+					print 'Lines: ' + str(lineCounter)
+					sys.exit()
+			spaceCounter = 0
+			print ''
+			
+			if i%modBorder == 0:	
+				alph.append(' ')
+			else:
+				for o in range(random.randint(0,10)):
+					alph.append(orAlph[random.randint(0,len(orAlph)-1)])
+
+			time.sleep(speed)
+			lineCounter += 1
+		return lineCounter
+	def con(self):
+		shortcuts = {
+		'f':'firefox &',
+		'h':'htop',
+		'p':'sudo powertop',
+		's':'skype &',
+		'ho':'hotot',
+		'm':'mplayer',
+		'g':'gedit &',
+		'c':'clear',
+		}
+		os.system('clear')
+		__x = ''
+		while __x != 'e':
+			__x = raw_input('')
+			if __x == 'e':
+				break
+			if '#' in __x:
+				__x = __x.replace('#','')
+				for i in shortcuts:
+					if __x == i:
+						os.system(shortcuts[i])
+					else:
+						os.system(__x)
+				self.history.append(__x)
+			else:
+				self.history.append(__x)
+				exec __x
+		sys.exit()		
 class consoleTools(object):
 	def STC(self):
 		'''
 		Shutdown the Computer!
 		'''
-		os.system('clear | sudo shutdown now')
+		os.system('clear ; sudo shutdown now')
 
 	def conCom(self,command):
 		'''

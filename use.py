@@ -1,4 +1,5 @@
 from main import *
+import random
 g = generalTools()
 t = timeTools()
 f = fileTools()
@@ -13,4 +14,5 @@ Example:
 '''
 #####################################################
 '''
-g.ACM(1400,56,'p')
+#g.ACM(1400,56,'p')
+g.con()
