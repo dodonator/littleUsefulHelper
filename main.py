@@ -1,4 +1,8 @@
 # coding: utf-8
+
+# Für einige Funktionen ist es wichtig im gleichen Verzeichnis die Datei history.txt
+# angelegt zu haben. Um eine leere Datei zu erstellen einfach:
+# touch history.txt in die Kommandozeile im entsprechenden Verzeichnis anlegen
 import sys
 import os
 import random
@@ -10,8 +14,8 @@ import getpass
 			
 class generalTools(object):
 	def __init__(self):
-		self.history = []
-
+		f = fileTools()
+		self.history = f.readF('history.txt').split('\n')
 	def repString(self,string,rep):
 		'''
 		repString(string,rep)
@@ -186,7 +190,7 @@ class generalTools(object):
 		Parameter:
 		rep: Repetition (should be a multiple of matrixWith)
 		matrixWith: Writh of the matrix
-		mode: the modus of the program
+		mode: the modus of the program ('p') for print or 'r' for return)
 		######################################################
 		'''
 		os.system('clear')
@@ -220,6 +224,11 @@ class generalTools(object):
 		return matrix[random.randint(0,len(matrix)-1)]
 
 	def matrix(self,rep,matrixWith,speed,divisor,modBorder):
+		'''
+		matrix(rep,matrixWith,speed,divisor,modBorder)
+		This function create the matrix
+		######################################################
+		'''
 		rep * 56
 		os.system('clear')
 		alph = []
@@ -282,6 +291,7 @@ class generalTools(object):
 		os.system('clear')
 		__x = ''
 		while __x != 'e':
+			f = fileTools()
 			__x = raw_input('')
 			if __x == 'e':
 				break
@@ -292,10 +302,44 @@ class generalTools(object):
 						os.system(shortcuts[i])
 				os.system(__x)
 				self.history.append(__x)
+				self.logHistory()
 			else:
 				self.history.append(__x)
+				self.logHistory()
 				exec __x
-		sys.exit()		
+		
+				
+		sys.exit()
+	def execcuteCode(self,code):
+		self.history.append(code)
+		exec code
+		f = fileTools()
+		f.addF('history.txt',self.history)
+
+	def cleanCodeHistory(self):
+		self.history = []
+		f = fileTools()
+		f.writeF('history.txt','')
+
+	def hiddenInput(self,message):
+		result = getpass.getpass(message)
+		return result
+
+	def PFOM(self,module,typ): # print functions of module
+		result = [dir(module),type(module)]
+		if typ == 'p':
+			print dir(module)
+		return result
+
+	def logHistory(self):
+		f = fileTools()
+		for i in self.history:
+			i += '\n'
+			f.addF('history.txt',i)
+
+	def PH(self): # print history
+		self.printArray(self.history)
+
 class consoleTools(object):
 	def STC(self):
 		'''
