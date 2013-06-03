@@ -5,6 +5,7 @@ t = timeTools()
 f = fileTools()
 r = randomTools()
 c = consoleTools()
+m = matrixTools()
 '''
 #####################################################
 If you want help use the function g.SH(functionName)
@@ -14,5 +15,5 @@ Example:
 '''
 #####################################################
 '''
-#g.ACM(1400,56,'p')
+#m.ACM(1400,56,'p')
 g.con()

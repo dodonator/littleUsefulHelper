@@ -3,6 +3,7 @@
 # Für einige Funktionen ist es wichtig im gleichen Verzeichnis die Datei history.txt
 # angelegt zu haben. Um eine leere Datei zu erstellen einfach:
 # touch history.txt in die Kommandozeile im entsprechenden Verzeichnis anlegen
+
 import sys
 import os
 import random
@@ -10,7 +11,6 @@ import math
 import time
 import datetime
 import getpass
-
 			
 class generalTools(object):
 	def __init__(self):
@@ -52,31 +52,6 @@ class generalTools(object):
 			return alph['l']
 		else:
 			return alph
-		
-	def CLRI(self,length,start,end,typ): # Create List of Random Integer
-		'''
-		This function create a list of random Integer
-		CLRI(length,start,end,typ)
-		#############################################
-		Parameter: 
-		length: Length of the created list
-		start: start of the random range
-		end: end of the random range
-		#############################################
-		Example:
-		CLRI(5,1,4)
-		Result: 
-		[1,4,3,2,1]
-		'''
-		if typ == 'a':
-			result = []
-			for i in range(length):
-				result.append(random.randint(start,end))
-		elif typ == 'd':
-			result = {}
-			for i in range(length):			
-				result[i] = random.randint(start,end)
-		return result # Can return list or dict
 		
 	def secretKey(self,passphrase,numMistakes):
 			access = False
@@ -181,6 +156,72 @@ class generalTools(object):
 		for i in array:
 			print i
 			
+	
+	def con(self):
+		shortcuts = {
+		'f':'firefox &',
+		'h':'htop',
+		'p':'sudo powertop',
+		's':'skype &',
+		'ho':'hotot',
+		'm':'mplayer',
+		'g':'gedit &',
+		'c':'clear',
+		}
+		os.system('clear')
+		__x = ''
+		while __x != 'e':
+			f = fileTools()
+			__x = raw_input('')
+			if __x == 'e':
+				break
+			if '#' in __x:
+				__x = __x.replace('#','')
+				for i in shortcuts:
+					if __x == i:
+						os.system(shortcuts[i])
+				os.system(__x)
+				self.history.append(__x)
+				self.logHistory()
+			else:
+				self.history.append(__x)
+				self.logHistory()
+				exec __x	
+		sys.exit()
+	def execcuteCode(self,code):
+		self.history.append(code)
+		exec code
+		f = fileTools()
+		f.addF('history.txt',self.history)
+
+	def cleanCodeHistory(self):
+		self.history = []
+		f = fileTools()
+		f.writeF('history.txt','')
+
+	def hiddenInput(self,message):
+		result = getpass.getpass(message)
+		return result
+
+	def PFOM(self,module,typ): # print functions of module
+		result = [dir(module),type(module)]
+		if typ == 'p':
+			print dir(module)
+		return result
+
+	def logHistory(self):
+		f = fileTools()
+		for i in self.history:
+			i += '\n'
+			f.addF('history.txt',i)
+
+	def PH(self): # print history
+		'''
+		PH():
+		print the history of the commands from con()
+		'''
+		self.printArray(self.history)
+class matrixTools(object):
 	def ACM(self,rep,matrixWith,mode): # A cool Matrix
 		'''
 		ACM(rep,matrixWith,mode)
@@ -277,69 +318,6 @@ class generalTools(object):
 			time.sleep(speed)
 			lineCounter += 1
 		return lineCounter
-	def con(self):
-		shortcuts = {
-		'f':'firefox &',
-		'h':'htop',
-		'p':'sudo powertop',
-		's':'skype &',
-		'ho':'hotot',
-		'm':'mplayer',
-		'g':'gedit &',
-		'c':'clear',
-		}
-		os.system('clear')
-		__x = ''
-		while __x != 'e':
-			f = fileTools()
-			__x = raw_input('')
-			if __x == 'e':
-				break
-			if '#' in __x:
-				__x = __x.replace('#','')
-				for i in shortcuts:
-					if __x == i:
-						os.system(shortcuts[i])
-				os.system(__x)
-				self.history.append(__x)
-				self.logHistory()
-			else:
-				self.history.append(__x)
-				self.logHistory()
-				exec __x
-		
-				
-		sys.exit()
-	def execcuteCode(self,code):
-		self.history.append(code)
-		exec code
-		f = fileTools()
-		f.addF('history.txt',self.history)
-
-	def cleanCodeHistory(self):
-		self.history = []
-		f = fileTools()
-		f.writeF('history.txt','')
-
-	def hiddenInput(self,message):
-		result = getpass.getpass(message)
-		return result
-
-	def PFOM(self,module,typ): # print functions of module
-		result = [dir(module),type(module)]
-		if typ == 'p':
-			print dir(module)
-		return result
-
-	def logHistory(self):
-		f = fileTools()
-		for i in self.history:
-			i += '\n'
-			f.addF('history.txt',i)
-
-	def PH(self): # print history
-		self.printArray(self.history)
-
 class consoleTools(object):
 	def STC(self):
 		'''
@@ -377,6 +355,30 @@ class consoleTools(object):
 	def CL(self): # clear 
 		os.system('clear')	
 class randomTools(object):
+	def CLRI(self,length,start,end,typ): # Create List of Random Integer
+		'''
+		This function create a list of random Integer
+		CLRI(length,start,end,typ)
+		#############################################
+		Parameter: 
+		length: Length of the created list
+		start: start of the random range
+		end: end of the random range
+		#############################################
+		Example:
+		CLRI(5,1,4)
+		Result: 
+		[1,4,3,2,1]
+		'''
+		if typ == 'a':
+			result = []
+			for i in range(length):
+				result.append(random.randint(start,end))
+		elif typ == 'd':
+			result = {}
+			for i in range(length):			
+				result[i] = random.randint(start,end)
+		return result # Can return list or dict
 	def ranPerPro(self,*probs): # Random per Probabilities
 		base = []
 		result = []
@@ -435,6 +437,11 @@ class randomTools(object):
 	def cube(self,size): # Würfel
 		result = random.randint(1,size)
 		return result
+	def RA(self,array,rep):
+		result = []
+		for i in range(rep):
+			result.append(random.choice(array))
+		return result	
 class fileTools(object):
 
 	def readF(self,filename):
