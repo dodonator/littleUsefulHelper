@@ -169,25 +169,25 @@ class generalTools(object):
 		'c':'clear',
 		}
 		os.system('clear')
-		__x = ''
-		while __x != 'e':
+		_command = ''
+		while _command != 'e':
 			f = fileTools()
-			__x = raw_input('')
-			if __x == 'e':
+			_command = raw_input('')
+			if _command == 'e':
 				break
-			if '#' in __x:
-				__x = __x.replace('#','')
+			if '#' in _command:
+				_command = _command.replace('#','')
 				for i in shortcuts:
-					if __x == i:
+					if _command == i:
 						os.system(shortcuts[i])
-				os.system(__x)
-				self.history.append(__x)
-				self.logHistory()
+				os.system(_command)
+				self.history.append(_command)
 			else:
-				self.history.append(__x)
-				self.logHistory()
-				exec __x	
-		sys.exit()
+				exec _command
+				self.history.append(_command)
+			
+		self.logHistory()	
+	
 	def execcuteCode(self,code):
 		self.history.append(code)
 		exec code
